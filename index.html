@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fundamentos de TI · Semanas 1 a 4 · UTPL</title>
+<meta name="description" content="Sitio del curso Fundamentos de Tecnologías de la Información (COMP_1082), UTPL, ABR/2026 - AGO/2026: próxima actividad, lecturas, contacto y cronograma de las semanas 1 a 4.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B3B66; --navy-2:#0F4C82; --gold:#F2B705; --gold-ink:#5C4500;
+  --paper:#F5F7FA; --surface:#FFFFFF; --ink:#18212E; --muted:#556172; --line:#D3DAE4;
+  --ok:#1E6B3A; --ok-bg:#E5F3EA; --warn-bg:#FFF6D6; --warn-line:#E5C04A;
+  --focus:#F2B705;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#0F2E4D; --navy-2:#7FB3E6; --paper:#0F1722; --surface:#172231; --ink:#E7ECF2;
+    --muted:#A6B2C2; --line:#2C3A4D; --ok:#7FD39B; --ok-bg:#163223; --warn-bg:#2E2709; --warn-line:#8A7220; --gold-ink:#F2B705;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#0F2E4D; --navy-2:#7FB3E6; --paper:#0F1722; --surface:#172231; --ink:#E7ECF2;
+  --muted:#A6B2C2; --line:#2C3A4D; --ok:#7FD39B; --ok-bg:#163223; --warn-bg:#2E2709; --warn-line:#8A7220; --gold-ink:#F2B705;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{overflow-wrap:break-word;hyphens:auto;margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.6}
+img{max-width:100%}
+a{color:var(--navy-2);text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--gold);color:#000;padding:.6rem 1rem;font-weight:700;z-index:10;border-radius:6px}
+.skip:focus{top:1rem}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0}
+h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem);margin-bottom:.4rem}
+h3{font-size:1.2rem}
+p{margin:.5rem 0}
+.lead{color:var(--muted);max-width:42rem}
+
+/* Cabecera */
+.top{background:var(--navy);color:#fff;padding:1.5rem 0 1.25rem;border-bottom:6px solid var(--gold)}
+.top .inst{font-size:.95rem;opacity:.9;margin:0}
+.top h1{font-size:clamp(1.65rem,1.2rem + 2.2vw,2.6rem);margin:.35rem 0 .25rem;color:#fff}
+.top .meta{margin:0;font-size:.95rem;opacity:.92}
+.nav{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;padding:0;list-style:none}
+.nav a{display:inline-block;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.45);padding:.45rem .85rem;border-radius:999px;font-size:.95rem}
+.nav a:hover{background:rgba(255,255,255,.12)}
+
+/* Bloque principal: próxima actividad */
+.now{margin:1.5rem 0 0;background:var(--surface);border:1px solid var(--line);border-left:10px solid var(--gold);border-radius:6px 14px 14px 6px;padding:1.25rem 1.25rem 1.1rem}
+.now .when{font-weight:700;color:var(--gold-ink);margin:0}
+.now h2{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);margin:.2rem 0 .4rem}
+.now .acts{margin:.6rem 0 0;padding-left:1.2rem}
+.now .acts li{margin:.25rem 0}
+.graded{margin-top:.9rem;background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;padding:.75rem .9rem}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:.55rem 1rem;border-radius:8px;border:2px solid var(--navy-2);color:var(--navy-2);background:transparent;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--navy-2);color:var(--surface)}
+.btn:hover{filter:brightness(1.08)}
+.sim{margin-top:1rem;font-size:.95rem;color:var(--muted)}
+.sim summary{cursor:pointer}
+.sim label{display:block;margin:.5rem 0 .25rem}
+.sim input{font:inherit;padding:.4rem;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+
+/* Tres accesos */
+.tasks3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1rem;margin:1.25rem 0 0}
+.tasks3 a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem}
+.tasks3 a:hover{border-color:var(--navy-2)}
+.tasks3 strong{display:block;font-family:var(--serif);font-size:1.2rem;color:var(--navy-2)}
+.tasks3 span{color:var(--muted);font-size:.97rem}
+
+section.blk{padding:2.5rem 0 0}
+
+/* Cronograma como línea de tiempo vertical */
+.timeline{list-style:none;margin:1.25rem 0 0;padding:0;border-left:3px solid var(--line);margin-left:.9rem}
+.week{position:relative;padding:0 0 1.75rem 1.6rem}
+.week::before{content:attr(data-n);position:absolute;left:-1.15rem;top:0;width:2rem;height:2rem;border-radius:50%;background:var(--surface);border:3px solid var(--navy-2);color:var(--navy-2);font-weight:700;display:grid;place-items:center;font-size:.95rem}
+.week.current::before{background:var(--gold);border-color:var(--gold);color:#000}
+.week .dates{margin:0;color:var(--muted);font-size:.95rem}
+.week h3{margin:.15rem 0 .35rem}
+.week .unit{margin:0;font-weight:700}
+.week{overflow-wrap:anywhere}
+.week ul{margin:.35rem 0;padding-left:1.15rem}
+.week details{margin-top:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.6rem .85rem}
+.week summary{cursor:pointer;font-weight:700;min-height:32px}
+.act{padding:.55rem 0;border-top:1px solid var(--line)}
+.act:first-of-type{border-top:0}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:.08rem .5rem;border-radius:999px;border:1px solid currentColor;margin-right:.35rem;white-space:nowrap}
+.tag.ACD{color:var(--navy-2)} .tag.AA{color:var(--ok)} .tag.APE{color:var(--gold-ink)}
+.small{font-size:.92rem;color:var(--muted)}
+.foot-note{font-size:.92rem;color:var(--muted);margin-top:.5rem}
+
+/* Foro calificado */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.15rem;margin-top:1rem}
+.rub{display:grid;gap:.4rem;margin:.6rem 0 0;padding:0;list-style:none}
+.rub li{overflow-wrap:anywhere;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1rem;border-bottom:1px dashed var(--line);padding:.3rem 0}
+.rub li span{flex:1 1 auto;min-width:0}
+.rub li b{white-space:nowrap}
+
+/* Lecturas */
+.filters{display:flex;flex-wrap:wrap;gap:.75rem;align-items:flex-end;margin-top:1rem}
+.filters label{display:flex;flex-direction:column;font-weight:700;font-size:.95rem;gap:.25rem;flex:1 1 14rem;min-width:0;max-width:100%}
+.filters input,.filters select{width:100%;font:inherit;padding:.55rem .65rem;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-height:44px}
+.res{list-style:none;margin:1rem 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem}
+.res li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem}
+.res h3{font-size:1.08rem;font-family:var(--sans);font-weight:700}
+.acc{font-weight:700}
+.acc.EVA{color:var(--navy-2)} .acc.Biblioteca{color:var(--gold-ink)} .acc.Abierto{color:var(--ok)}
+
+/* Lista de tareas */
+.notice{background:var(--warn-bg);border:2px solid var(--warn-line);border-radius:12px;padding:.85rem 1rem;margin-top:1rem}
+.notice strong{display:block}
+.todo fieldset{min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin:1rem 0 0;padding:.6rem 1rem .8rem}
+.todo legend{font-family:var(--serif);font-weight:700;font-size:1.1rem;padding:0 .35rem}
+.todo label{min-width:0;display:flex;gap:.7rem;align-items:flex-start;padding:.45rem 0;cursor:pointer}
+.todo input[type=checkbox]{width:1.35rem;height:1.35rem;margin-top:.15rem;flex:none;accent-color:var(--navy-2)}
+.todo label>span{min-width:0;flex:1 1 auto;overflow-wrap:anywhere}
+.todo .done span{text-decoration:line-through;color:var(--muted)}
+.progress{font-weight:700;margin-top:.75rem}
+
+/* Contacto y evaluación */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem}
+.contact dl{margin:0}
+.contact dt{font-weight:700;margin-top:.5rem}
+.contact dd{margin:0}
+.scroll{overflow-x:auto;margin-top:1rem;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.97rem}
+th,td{text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-weight:700}
+caption{text-align:left;padding:.6rem .75rem;font-weight:700}
+
+footer{margin-top:3rem;padding:1.5rem 0 2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#principal">Saltar al contenido</a>
+
+<header class="top">
+  <div class="wrap">
+    <p class="inst">Universidad Técnica Particular de Loja · Tecnologías de la Información · Modalidad en línea</p>
+    <h1>Fundamentos de Tecnologías de la Información</h1>
+    <p class="meta">COMP_1082 · Primer ciclo · Abril a agosto de 2026 · Esta versión cubre las semanas 1 a 4</p>
+    <nav aria-label="Secciones del sitio">
+      <ul class="nav">
+        <li><a href="#cronograma">Cronograma</a></li>
+        <li><a href="#lecturas">Lecturas</a></li>
+        <li><a href="#tareas">Mi lista de tareas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#evaluacion">Evaluación</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="principal" class="wrap" tabindex="-1">
+
+  <!-- 1. Próxima actividad (se calcula por fecha, hora de Ecuador) -->
+  <section class="now" aria-labelledby="now-title" aria-live="polite" id="proxima">
+    <p class="when" id="now-when">Cargando…</p>
+    <h2 id="now-title">Próxima actividad</h2>
+    <div id="now-body"></div>
+    <details class="sim">
+      <summary>Ver el sitio en otra fecha (demostración)</summary>
+      <label for="sim-date">Fecha a simular</label>
+      <input type="date" id="sim-date" min="2026-03-30" max="2026-05-17">
+      <button type="button" class="btn" id="sim-reset" style="margin-left:.4rem">Usar la fecha de hoy</button>
+    </details>
+  </section>
+
+  <!-- 2. Tres accesos directos -->
+  <div class="tasks3">
+    <a href="#proxima"><strong>Próxima actividad</strong><span>Qué toca esta semana y qué actividad calificada está abierta.</span></a>
+    <a href="#lecturas"><strong>Encontrar una lectura</strong><span>Busque por semana o palabra y vea dónde está disponible.</span></a>
+    <a href="#contacto"><strong>Contactar a la docente</strong><span>Tutoría de los lunes, correo institucional y aula virtual.</span></a>
+  </div>
+
+  <!-- Cronograma -->
+  <section class="blk" id="cronograma" aria-labelledby="crono-title">
+    <h2 id="crono-title">Cronograma de las semanas 1 a 4</h2>
+    <p class="lead">Primer bimestre. Resultado de aprendizaje: domina los conceptos básicos de Tecnologías de la Información.</p>
+    <ol class="timeline" id="timeline"></ol>
+    <p class="foot-note" id="dates-note"></p>
+  </section>
+
+  <!-- Actividad calificada -->
+  <section class="blk" id="foro" aria-labelledby="foro-title">
+    <h2 id="foro-title">Actividad calificada: foro sobre el modelo de Von Neumann</h2>
+    <div class="card" id="foro-body"></div>
+  </section>
+
+  <!-- Lecturas -->
+  <section class="blk" id="lecturas" aria-labelledby="lect-title">
+    <h2 id="lect-title">Lecturas y recursos</h2>
+    <p class="lead">Cada recurso indica dónde está: en el aula virtual (EVA), en la biblioteca virtual UTPL o de acceso abierto.</p>
+    <div class="filters">
+      <label for="q">Buscar
+        <input id="q" type="search" placeholder="Ej.: internet, hardware, Laudon" autocomplete="off">
+      </label>
+      <label for="wk">Semana
+        <select id="wk">
+          <option value="">Todas</option>
+          <option value="1">Semana 1</option><option value="2">Semana 2</option>
+          <option value="3">Semana 3</option><option value="4">Semana 4</option>
+        </select>
+      </label>
+    </div>
+    <p class="small" id="res-count" aria-live="polite"></p>
+    <ul class="res" id="res"></ul>
+  </section>
+
+  <!-- Lista de tareas -->
+  <section class="blk todo" id="tareas" aria-labelledby="todo-title">
+    <h2 id="todo-title">Mi lista de tareas</h2>
+    <div class="notice" role="note">
+      <strong>Marcar aquí no entrega la tarea.</strong>
+      Esta lista solo le ayuda a organizarse. Se guarda en este navegador y en este dispositivo: nadie más la ve, no crea un registro académico y puede borrarse si limpia los datos del navegador. Las entregas y la participación en el foro se hacen en el aula virtual (EVA).
+    </div>
+    <div id="todo-list"></div>
+    <p class="progress" id="todo-progress" aria-live="polite"></p>
+    <button type="button" class="btn" id="todo-reset">Desmarcar todo</button>
+  </section>
+
+  <!-- Contacto -->
+  <section class="blk" id="contacto" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contacto y tutorías</h2>
+    <div class="contact" id="contact-body"></div>
+  </section>
+
+  <!-- Evaluación (texto del plan docente) -->
+  <section class="blk" id="evaluacion" aria-labelledby="eval-title">
+    <h2 id="eval-title">Evaluación del primer bimestre</h2>
+    <p class="lead">Datos copiados del plan docente aprobado (acta 21, 23-12-2025). El documento oficial prevalece y está en el aula virtual.</p>
+    <div class="scroll" role="region" aria-labelledby="eval-title" tabindex="0">
+      <table id="eval-table">
+        <thead><tr><th scope="col">Componente</th><th scope="col">Actividad</th><th scope="col">Fechas</th><th scope="col">Calificación</th><th scope="col">Peso</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="foot-note" id="recup"></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Sitio informativo del curso. Fuente: plan docente de Fundamentos de Tecnologías de la Información, UTPL, período ABR/2026 - AGO/2026. Si encuentra una diferencia con el plan docente o el aula virtual, vale lo oficial; avise a la docente.</p>
+    <p>Este sitio no recoge datos personales. Horas y fechas en hora de Ecuador (UTC−5).</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   DATOS DEL CURSO — única fuente de contenido.
+   Para actualizar fechas, lecturas o enlaces, edite solo este bloque.
+   ===================================================================== */
+const SILABO = {
+  curso: "Fundamentos de Tecnologías de la Información",
+  codigo: "COMP_1082",
+  periodo: "ABR/2026 - AGO/2026",
+  zona: "America/Guayaquil",
+  notaFechas: "Las fechas de las semanas 1 a 3 se calcularon a partir del calendario del plan docente (la semana 4 inicia el lunes 27 de abril de 2026). Confírmelas en el aula virtual.",
+  semanas: [
+    { n:1, inicio:"2026-04-06", fin:"2026-04-12",
+      unidad:"Unidad 1. Evolución histórica de las Tecnologías de la Información",
+      temas:["1.1 La información y las tecnologías de la información en la sociedad","1.2 Evolución histórica de las tecnologías"],
+      actividades:[
+        {tipo:"ACD", texto:"Reciba la bienvenida e instrucciones generales de la asignatura en la tutoría semanal, así como interactuar con su docente y compañeros.", recurso:"Chat o videoconferencia de tutoría y consultas", horas:2.0},
+        {tipo:"AA", texto:"Identifique la importancia de la información y las tecnologías de la información revisando el contenido en la Unidad 1 de la guía virtualizada.", recurso:"Unidad 1 de la guía virtualizada", horas:1.25},
+        {tipo:"AA", texto:"Lea la bienvenida y orientaciones de su docente en el Anuncio ubicado en esta primera semana.", recurso:"EVA", horas:2.0}
+      ]},
+    { n:2, inicio:"2026-04-13", fin:"2026-04-19",
+      unidad:"Unidad 1. Evolución histórica de las Tecnologías de la Información",
+      temas:["1.3 Internet"],
+      actividades:[
+        {tipo:"ACD", texto:"Participe de la tutoría con la explicación de la primera unidad de la asignatura y orientaciones generales, así como exponer consultas e inquietudes, a través de la tutoría semana 2.", recurso:"Chat de tutoría semanal", horas:2.0},
+        {tipo:"AA", texto:"Complemente la información proporcionada en la guía virtualizada, utilizando los recursos proporcionados en el anuncio semanal tomando nota de datos relevantes como son fechas, conceptos y ejemplos.", recurso:"Micro video Unidad 1: Evolución de las tecnologías de la información", horas:1.0},
+        {tipo:"AA", texto:"Desarrolle la Autoevaluación de la Unidad 1.", recurso:"Unidad 1 de la guía virtualizada", horas:1.5},
+        {tipo:"AA", texto:"Desarrolle las actividades propuestas en la Unidad 1 de la guía virtualizada.", recurso:"Unidad 1 de la guía virtualizada", horas:1.25}
+      ]},
+    { n:3, inicio:"2026-04-20", fin:"2026-04-26",
+      unidad:"Unidad 2. Infraestructura de tecnologías de la información",
+      temas:["2.1 Concepto y evolución de la infraestructura de TI","2.2 Fundamentos de hardware y redes","2.3 Software y sistemas de almacenamiento"],
+      actividades:[
+        {tipo:"ACD", texto:"Participe de la tutoría semanal donde se compartirá una síntesis de la Unidad 2 y orientaciones para las actividades a desarrollar esta semana.", recurso:"Chat de tutoría semanal EVA", horas:2.0},
+        {tipo:"AA", texto:"Caracterizar tecnologías emergentes o disruptivas descritas en la Unidad 2 de la guía virtualizada de Fundamentos de tecnologías de la información.", recurso:"Unidad 2 de la guía virtualizada", horas:2.0},
+        {tipo:"AA", texto:"Refuerce los contenidos desarrollando las actividades propuestas en la Unidad 2 de la guía virtualizada.", recurso:"Unidad 2 de la guía virtualizada", horas:2.0},
+        {tipo:"AA", texto:"Revise la sección de Anuncios en el EVA para encontrar orientaciones sobre las actividades a realizar en esta semana 3 y observar la grabación de la tutoría de la semana anterior.", recurso:"EVA", horas:1.0},
+        {tipo:"AA", texto:"Interactúe con los recursos proporcionados en el anuncio semanal.", recurso:"Micro video", horas:1.0}
+      ]},
+    { n:4, inicio:"2026-04-27", fin:"2026-05-03",
+      unidad:"Unidad 2. Infraestructura de tecnologías de la información",
+      temas:["2.4 Tipos de infraestructura","2.5 Diseño e implementación de recursos"],
+      actividades:[
+        {tipo:"ACD", texto:"Participe de la tutoría semana 4 exponiendo sus inquietudes respecto a las actividades o temáticas abordadas hasta la fecha.", recurso:"Chat de tutoría semanal EVA", horas:2.0},
+        {tipo:"ACD", texto:"Análisis de dispositivos aplicando el modelo de Von Neumann (actividad calificada).", recurso:"Foro", horas:8.0, calificada:true},
+        {tipo:"AA", texto:"Familiarícese con las actividades a realizar en esta semana revisando la sección de Anuncios en el EVA.", recurso:"EVA", horas:1.0},
+        {tipo:"AA", texto:"Autoevalúe sus conocimientos de la Unidad 2, desarrolle la Autoevaluación de la Unidad.", recurso:"Autoevaluación Unidad 2", horas:2.0}
+      ]}
+  ],
+  foro: {
+    titulo:"Análisis de dispositivos aplicando el modelo de Von Neumann",
+    componente:"Aprendizaje en contacto con el docente (ACD)", recurso:"Foro", unidad:"Unidad 2. Infraestructura de tecnologías de la información",
+    inicio:"2026-04-27", fin:"2026-05-10", calificacion:"3.5", peso:"35.0 %", instrumento:"Lista de cotejo",
+    estrategias:[
+      "Estudiar las cuatro unidades funcionales básicas definidas por John Von Neumann: memoria principal, unidad aritmética lógica (ALU), unidad de control y unidad de entrada/salida.",
+      "Seleccionar un dispositivo de uso cotidiano o empresarial (ej. un smartphone, un servidor o un dispositivo IoT).",
+      "Esquematizar el flujo de datos dentro de ese dispositivo basándose en el modelo IPO (Entrada-Proceso-Salida), identificando qué hardware específico del dispositivo actual cumple la función de cada una de las unidades de Von Neumann."
+    ],
+    sugerencia:"Se sugiere elaborar un diagrama arquitectónico anotado o infografía que represente gráficamente la interacción de las cuatro unidades funcionales dentro del dispositivo seleccionado, acompañada de una breve descripción técnica que justifique el papel de cada componente en el procesamiento de la información.",
+    rubrica:[
+      ["Selección y descripción del dispositivo","2,5 puntos"],
+      ["Identifica los 4 elementos del modelo de Von Neumann en el dispositivo","2,5 puntos"],
+      ["Esquema con los elementos y descripción","2,5 puntos"],
+      ["Retroalimentación a la participación de algún compañero","2,5 puntos"],
+      ["Total","10 puntos"]
+    ]
+  },
+  recursos: [
+    { titulo:"Guía virtualizada Fundamentos de Tecnologías de la Información", autor:"Rodríguez, G. (2026). Editorial UTPL", acceso:"EVA", url:null,
+      semanas:[1,2,3,4], detalle:"Bibliografía básica. Unidad 1 en las semanas 1 y 2; Unidad 2 en las semanas 3 y 4. Incluye autoevaluaciones." },
+    { titulo:"Micro video Unidad 1: Evolución de las tecnologías de la información", autor:"Recurso de la asignatura", acceso:"EVA", url:null,
+      semanas:[2], detalle:"Se publica en el anuncio semanal del aula virtual." },
+    { titulo:"Micro video de la semana 3", autor:"Recurso de la asignatura", acceso:"EVA", url:null,
+      semanas:[3], detalle:"Se publica en el anuncio semanal del aula virtual." },
+    { titulo:"Sistemas de información gerencial", autor:"Laudon, K. C. y Romero Elizondo, A. V. (2012). Pearson Educación", acceso:"Biblioteca", url:"https://visorweb.utpl.edu.ec/reader/sistemas-de-informacion-gerencial-1718287975",
+      semanas:[2,3,4], detalle:"Bibliografía complementaria: evolución de la infraestructura de TI e hitos de la historia de internet. Requiere ingresar con su cuenta UTPL." },
+    { titulo:"Presentación interactiva sobre las tecnologías de la información, su importancia y componentes", autor:"Recurso educativo abierto (Prezi)", acceso:"Abierto", url:"https://prezi.com/p/2kjyj-f76wwi/fundamentos-de-tecnologias-de-la-informacion/",
+      semanas:[1], detalle:"REA del plan docente." },
+    { titulo:"Video: El software. Definición y construcción, ingeniería de software", autor:"Recurso educativo abierto (YouTube)", acceso:"Abierto", url:"https://www.youtube.com/watch?v=31q9hnrd3u0",
+      semanas:[3], detalle:"REA del plan docente. Relacionado con el tema 2.3 Software y sistemas de almacenamiento." },
+    { titulo:"CISSP: Certified Information Systems Security Professional Study Guide", autor:"Stewart, J. M., Chapple, M. y Gibson, D. (2012). John Wiley & Sons", acceso:"Biblioteca", url:"https://ebookcentral.proquest.com/lib/utpl/reader.action?docID=875861",
+      semanas:[], detalle:"Bibliografía complementaria sobre seguridad de la información y certificación. No está asignada a una semana concreta." }
+  ],
+  contacto: {
+    docente:"Dra. Germania del Rocío Rodríguez Morales",
+    correo:"grrodriguez@utpl.edu.ec",
+    tutoria:"Lunes de 17:00 a 19:00 (hora de Ecuador), sesión virtual",
+    paralelo:"100",
+    canal:"Chat de tutoría semanal y Anuncios en el aula virtual (EVA)",
+    departamento:"Departamento de Ciencias de la Computación y Electrónica, Facultad de Ingenierías y Arquitectura"
+  },
+  evaluacion: [
+    ["Aprendizaje en contacto con el docente","Foro: Análisis de dispositivos aplicando el modelo de Von Neumann (lista de cotejo)","Semana 4: 27-abril-2026 a semana 5: 10-mayo-2026","3.5","35.0 %"],
+    ["Aprendizaje práctico-experimental","Práctica EVA: perfil profesional en TI comparado con otra disciplina de computación (lista de cotejo)","Semana 6: 11-mayo-2026 a semana 7: 24-mayo-2026","3.0","30.0 %"],
+    ["Aprendizaje autónomo","Cuestionario EVA (evaluación parcial)","Semana 7: 18-mayo-2026 a semana 8: 31-mayo-2026","1.0","10.0 %"],
+    ["Aprendizaje autónomo","Cuestionario en línea","Semana 8: 25-mayo-2026 a semana 8: 31-mayo-2026","2.5","25.0 %"]
+  ],
+  recuperacion:"Evaluación de recuperación (evaluación en línea 70 %, más acumulado actividades APE y ACD 30 %): 10 puntos, del 29-08-2026 al 01-09-2026."
+};
+
+/* ===================== LÓGICA (no requiere edición) ===================== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const TIPOS = {ACD:"Contacto con la docente", AA:"Autónomo", APE:"Práctico-experimental"};
+
+function hoyEcuador(){
+  return new Intl.DateTimeFormat('en-CA',{timeZone:SILABO.zona,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+}
+function fecha(iso, largo){
+  const [y,m,d] = iso.split('-').map(Number);
+  const o = largo ? {weekday:'long',day:'numeric',month:'long',year:'numeric'} : {day:'numeric',month:'long'};
+  return new Intl.DateTimeFormat('es-EC',{timeZone:'UTC',...o}).format(new Date(Date.UTC(y,m-1,d,12)));
+}
+function rango(a,b){ return `${fecha(a)} al ${fecha(b)} de ${b.slice(0,4)}`; }
+function enlaceExterno(url, texto){
+  return `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(texto)}<span class="sr"> (se abre en una pestaña nueva)</span></a>`;
+}
+
+/* Próxima actividad */
+function fechaActiva(){
+  const p = new URLSearchParams(location.search).get('fecha');
+  const v = $('#sim-date').value || (p && /^\d{4}-\d{2}-\d{2}$/.test(p) ? p : '');
+  return v || hoyEcuador();
+}
+function pintarProxima(){
+  const f = fechaActiva(), S = SILABO.semanas, F = SILABO.foro;
+  const sim = f !== hoyEcuador();
+  const sem = S.find(s => s.inicio <= f && f <= s.fin);
+  const foroAbierto = F.inicio <= f && f <= F.fin;
+  let when, titulo, body = '';
+  document.querySelectorAll('.week').forEach(w => w.classList.toggle('current', sem && +w.dataset.n === sem.n));
+
+  const foroHTML = `<div class="graded"><strong>Actividad calificada abierta:</strong> foro «${esc(F.titulo)}». Cierra el ${fecha(F.fin,true)}. Calificación ${F.calificacion} (${F.peso} del bimestre). Participe en el foro del aula virtual.</div>`;
+
+  if (f < S[0].inicio){
+    when = `El curso empieza el ${fecha(S[0].inicio,true)}`;
+    titulo = `Semana 1 · ${S[0].unidad.replace(/^Unidad 1\. /,'')}`;
+    body = `<p>Primera acción: leer el anuncio de bienvenida en el aula virtual y asistir a la tutoría del lunes.</p>`;
+    body += botones(1);
+  } else if (sem){
+    when = `Semana ${sem.n} · del ${rango(sem.inicio, sem.fin)}`;
+    titulo = sem.temas.join(' · ');
+    body = `<p>${esc(sem.unidad)}</p><ul class="acts">` +
+      sem.actividades.map(a => `<li><span class="tag ${a.tipo}">${a.tipo}</span>${esc(a.texto)}</li>`).join('') + `</ul>`;
+    if (foroAbierto) body += foroHTML;
+    body += botones(sem.n);
+  } else if (foroAbierto){
+    when = `Semana 5 · fuera de las cuatro semanas de este sitio`;
+    titulo = `Termine el foro sobre el modelo de Von Neumann`;
+    body = foroHTML + `<p>Las actividades de la semana 5 están en el aula virtual.</p>` + botones(4);
+  } else {
+    when = `Las semanas 1 a 4 terminaron el ${fecha(S[S.length-1].fin,true)}`;
+    titulo = `Consulte el aula virtual para las semanas siguientes`;
+    body = `<p>Esta primera versión del sitio cubre solo las cuatro primeras semanas. El cronograma de abajo sigue disponible para repasar.</p>` +
+      `<div class="btns"><a class="btn primary" href="#cronograma">Repasar el cronograma</a><a class="btn" href="#evaluacion">Ver la evaluación del bimestre</a></div>`;
+  }
+  if (sim) when += ` (fecha simulada: ${fecha(f,true)})`;
+  $('#now-when').textContent = when;
+  $('#now-title').textContent = titulo;
+  $('#now-body').innerHTML = body;
+}
+function botones(n){
+  return `<div class="btns"><a class="btn primary" href="#semana-${n}">Ver la semana ${n}</a>` +
+    `<a class="btn" href="#lecturas" data-semana="${n}">Lecturas de la semana ${n}</a>` +
+    `<a class="btn" href="#contacto">Contactar a la docente</a></div>`;
+}
+
+/* Cronograma */
+function pintarCronograma(){
+  $('#timeline').innerHTML = SILABO.semanas.map(s => {
+    const horas = s.actividades.reduce((t,a)=>t+a.horas,0);
+    return `<li class="week" id="semana-${s.n}" data-n="${s.n}" tabindex="-1">
+      <p class="dates">${fecha(s.inicio,true)} al ${fecha(s.fin,true)}</p>
+      <h3>Semana ${s.n}</h3>
+      <p class="unit">${esc(s.unidad)}</p>
+      <ul>${s.temas.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+      <details><summary>Actividades de la semana (${s.actividades.length}, ${horas.toString().replace('.',',')} h)</summary>
+        ${s.actividades.map(a=>`<div class="act"><span class="tag ${a.tipo}" title="${TIPOS[a.tipo]}">${a.tipo}</span>${esc(a.texto)}
+          <div class="small">Recurso: ${esc(a.recurso)} · ${String(a.horas).replace('.',',')} h${a.calificada?' · <a href="#foro">ver detalles y lista de cotejo</a>':''}</div></div>`).join('')}
+        <p class="small">ACD: contacto con la docente · AA: aprendizaje autónomo · APE: práctico-experimental</p>
+      </details></li>`;
+  }).join('');
+  $('#dates-note').textContent = SILABO.notaFechas;
+}
+
+/* Foro */
+function pintarForo(){
+  const F = SILABO.foro;
+  $('#foro-body').innerHTML = `
+    <p><strong>Del ${fecha(F.inicio,true)} al ${fecha(F.fin,true)}.</strong> ${esc(F.componente)} · ${esc(F.unidad)} · Calificación ${F.calificacion} (${F.peso} del primer bimestre) · ${esc(F.instrumento)}.</p>
+    <h3>Estrategias de trabajo</h3>
+    <ol>${F.estrategias.map(e=>`<li>${esc(e)}</li>`).join('')}</ol>
+    <p>${esc(F.sugerencia)}</p>
+    <h3>Lista de cotejo</h3>
+    <ul class="rub">${F.rubrica.map(r=>`<li><span>${esc(r[0])}</span><b>${esc(r[1])}</b></li>`).join('')}</ul>
+    <p class="small">La participación se registra en el foro del aula virtual (EVA).</p>`;
+}
+
+/* Lecturas */
+function pintarRecursos(){
+  const q = $('#q').value.trim().toLowerCase(), w = $('#wk').value;
+  const lista = SILABO.recursos.filter(r =>
+    (!w || r.semanas.includes(+w)) &&
+    (!q || (r.titulo+' '+r.autor+' '+r.detalle+' '+r.acceso).toLowerCase().includes(q)));
+  const etiqueta = {EVA:"En el aula virtual (EVA)", Biblioteca:"Biblioteca virtual UTPL", Abierto:"Acceso abierto"};
+  $('#res').innerHTML = lista.map(r => `<li>
+      <h3>${r.url ? enlaceExterno(r.url, r.titulo) : esc(r.titulo)}</h3>
+      <p class="small">${esc(r.autor)}</p>
+      <p><span class="acc ${r.acceso}">${etiqueta[r.acceso]}</span> · ${r.semanas.length ? 'Semana' + (r.semanas.length>1?'s ':' ') + r.semanas.join(', ') : 'Complementaria general'}</p>
+      <p>${esc(r.detalle)}${r.url ? '' : ' Búsquelo en el aula virtual de la asignatura.'}</p></li>`).join('');
+  $('#res-count').textContent = lista.length ? `${lista.length} recurso${lista.length>1?'s':''}` : 'Ningún recurso coincide. Pruebe con otra palabra o elija «Todas» las semanas.';
+}
+
+/* Lista de tareas (localStorage, con respaldo en memoria) */
+const CLAVE = 'fti-utpl-2026-tareas-v1';
+let marcas = {};
+function leer(){ try { marcas = JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch(e){ marcas = {}; } }
+function guardar(){ try { localStorage.setItem(CLAVE, JSON.stringify(marcas)); } catch(e){} }
+function pintarTareas(){
+  $('#todo-list').innerHTML = SILABO.semanas.map(s => `<fieldset><legend>Semana ${s.n}</legend>
+    ${s.actividades.map((a,i)=>{ const id=`s${s.n}-a${i+1}`, c=!!marcas[id];
+      return `<label class="${c?'done':''}"><input type="checkbox" data-id="${id}" ${c?'checked':''}><span><span class="tag ${a.tipo}">${a.tipo}</span>${esc(a.texto)}</span></label>`; }).join('')}
+  </fieldset>`).join('');
+  progreso();
+}
+function progreso(){
+  const total = SILABO.semanas.reduce((t,s)=>t+s.actividades.length,0);
+  const hechas = Object.values(marcas).filter(Boolean).length;
+  $('#todo-progress').textContent = `Marcó ${hechas} de ${total} actividades en este navegador. Recuerde: marcar no es entregar.`;
+}
+
+/* Contacto */
+function pintarContacto(){
+  const C = SILABO.contacto;
+  $('#contact-body').innerHTML = `
+    <div class="card"><h3>Tutoría semanal</h3><dl>
+      <dt>Horario</dt><dd>${esc(C.tutoria)}</dd>
+      <dt>Paralelo</dt><dd>${esc(C.paralelo)}</dd>
+      <dt>Dónde</dt><dd>${esc(C.canal)}</dd></dl></div>
+    <div class="card"><h3>Docente responsable</h3><dl>
+      <dt>Nombre</dt><dd>${esc(C.docente)}</dd>
+      <dt>Correo institucional</dt><dd><a href="mailto:${esc(C.correo)}?subject=${encodeURIComponent('[COMP_1082] Consulta')}">${esc(C.correo)}</a></dd>
+      <dt>Unidad</dt><dd>${esc(C.departamento)}</dd></dl>
+      <p class="small">Al escribir, indique en el asunto el código COMP_1082 y su paralelo.</p></div>`;
+}
+
+/* Evaluación */
+function pintarEvaluacion(){
+  $('#eval-table tbody').innerHTML = SILABO.evaluacion.map(r =>
+    `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td></tr>`).join('');
+  $('#recup').textContent = SILABO.recuperacion;
+}
+
+/* Arranque y eventos */
+leer(); pintarCronograma(); pintarForo(); pintarRecursos(); pintarTareas(); pintarContacto(); pintarEvaluacion(); pintarProxima();
+
+$('#q').addEventListener('input', pintarRecursos);
+$('#wk').addEventListener('change', pintarRecursos);
+$('#sim-date').addEventListener('change', pintarProxima);
+$('#sim-reset').addEventListener('click', () => { $('#sim-date').value=''; pintarProxima(); });
+$('#todo-list').addEventListener('change', e => {
+  const id = e.target.dataset.id; if (!id) return;
+  marcas[id] = e.target.checked; if (!marcas[id]) delete marcas[id];
+  e.target.closest('label').classList.toggle('done', e.target.checked);
+  guardar(); progreso();
+});
+$('#todo-reset').addEventListener('click', () => { marcas = {}; guardar(); pintarTareas(); });
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-semana]'); if (!a) return;
+  $('#wk').value = a.dataset.semana; $('#q').value = ''; pintarRecursos();
+});
+</script>
+</body>
+</html>
